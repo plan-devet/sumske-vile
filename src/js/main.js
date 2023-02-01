@@ -105,7 +105,7 @@ const modalTemplate = Handlebars.compile(`
               <img src="images/stan-{{code}}.png" width="100%">
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zatvori</button>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
           </div>
         </div>
