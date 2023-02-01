@@ -36,6 +36,10 @@ $body-bg: #fff;
 $border-radius: .4rem;
 $success: #7952b3;
 
+$container-max-widths: (
+  xxl: 1400px
+);
+
 // Required
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
@@ -72,7 +76,7 @@ $success: #7952b3;
 @import "~bootstrap/scss/popover";
 // @import "~bootstrap/scss/carousel";
 // @import "~bootstrap/scss/spinners";
-@import "~bootstrap/scss/offcanvas"; // Requires transitions
+// @import "~bootstrap/scss/offcanvas"; // Requires transitions
 // @import "~bootstrap/scss/placeholders";
 
 // Helpers
@@ -85,13 +89,16 @@ $success: #7952b3;
 //
 // Custom styles
 //
+//@import "icon-list";
 
-@import "icon-list";
-
-body {
-  padding: 0.5rem;
-}
+// body {
+//   padding: 0.5rem;
+// }
 
 td {
   white-space: nowrap;
 }
+
+
+$bootstrap-icons-font-dir: "~bootstrap-icons/font/fonts";
+@import "~bootstrap-icons/font/bootstrap-icons.scss";

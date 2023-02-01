@@ -1,6 +1,7 @@
 // Import our custom CSS
 import '../scss/styles.scss';
 
+
 // Import only the Bootstrap components we need
 import { Util, Dropdown, Offcanvas, Popover } from 'bootstrap';
 
@@ -22,7 +23,11 @@ import data from "./apartments.js"
 
 const rowTemplate = Handlebars.compile(`
 <tr>
-  <td class="text-nowrap">{{stan}}</td>
+  <td class="text-nowrap">
+    <a href="#" cla ss="link-danger" data-bs-toggle="modal" data-bs-target="#modal-{{code}}">
+      {{stan}}
+    </a>
+  </td>
   <td class="text-center">{{kat}}</td>
 
   <td class="text-center">{{soba}}</td>
@@ -31,9 +36,9 @@ const rowTemplate = Handlebars.compile(`
   <td class="text-center">{{iznos}}</td>
   <td class="text-center">&nbsp</td>
 
+  <td class="text-center">{{sobe}}</td>
   <td class="text-center">{{boravak}}</td>
   <td class="text-center">{{kuhinja}}</td>
-  <td class="text-center">{{sobe}}</td>
   <td class="text-center">{{kupaonica}}</td>
 
   <td class="text-center">{{loggia}}</td>
@@ -45,8 +50,9 @@ const rowTemplate = Handlebars.compile(`
 </tr>
 `);
 
-const content = data.map(d =>
+const tableBody = data.map(d =>
   rowTemplate({
+    code: code(d.stan),
     stan: d.stan,
     kat: d.kat == 0 ? "PR" : d.kat,
     ulaz: d.ulaz,
@@ -64,8 +70,7 @@ const content = data.map(d =>
     iznos: fCurrency(d.cijena * d.prodajno)
   })
 ).join(" ");
-
-document.getElementById("stanovi-table-body").innerHTML = content;
+document.getElementById("stanovi-table-body").innerHTML = tableBody;
 
 function fCurrency(num) {
   return num.toLocaleString('hr', { minimumFractionDigits:2 });
@@ -83,3 +88,39 @@ function fAreas(a) {
   }
   return a.map(e => fCurrency(e)).join(" | ");
 }
+
+function code(stan) {
+  return stan.replace(" ", "-").toLowerCase()
+}
+
+const modalTemplate = Handlebars.compile(`
+      <div class="modal fade" tabindex="-1" id="modal-{{code}}" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">{{name}}</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <img src="images/stan-{{code}}.png" width="100%">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zatvori</button>
+            </div>
+          </div>
+        </div>
+      </div>
+`);
+const modals = data.map(d => modalTemplate({code: code(d.stan), name: d.stan})).join(" ");
+document.getElementById("stanovi-modals").innerHTML = modals;
+
+
+
+// const myModal = document.getElementById('modal')
+
+// myModal.addEventListener('shown.bs.modal', (e) => {
+//   console.log(this);
+//   console.log(e.relatedTarget.innerHTML);
+//   const stan = e.relatedTarget.innerHTML;
+//   document.getElementById("modal-title").innerHTML = stan;
+// })
