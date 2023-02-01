@@ -61,28 +61,45 @@
 
       <div class="table-responsive">
         <table class="table table-hover table-bordered">
-          <thead class="table-bordered">
+          <thead class="table-bordered table-light">
             <tr>
               <th colspan="4"></th>
+              <th colspan="2" class="text-center">cijena</th>
+              <th>&nbsp</th>
               <th colspan="9" class="text-center">površine</th>
             </tr>
             <tr>
               <th scope="col">stan</th>
               <th class="text-center" scope="col">kat</th>
-              <th class="text-center" scope="col">ulaz</th>
               <th class="text-center" scope="col">#&nbsp;soba</th>
-              <th class="text-end" scope="col">prodajna</th>
+              <th class="text-center" scope="col">površina</th>
+              <th class="text-center" scope="col">po m<sup>2</sup></th>
+              <th class="text-center" scope="col">ukupno</th>
+              <th class="text-center" scope="col">&nbsp</th>
 
-              <th class="text-end" scope="col">boravak</th>
-              <th class="text-end" scope="col">kuhinja</th>
+              <th class="text-center" scope="col">boravak</th>
+              <th class="text-center" scope="col">kuhinja</th>
               <th class="text-center" scope="col">sobe</th>
-              <th class="text-end" scope="col">kupaonica</th>
+              <th class="text-center" scope="col">kupaonica</th>
 
-              <th class="text-end" scope="col">loggia</th>
-              <th class="text-end" scope="col">terasa</th>
-              <th class="text-end" scope="col">vrt</th>
+              <th class="text-center" scope="col">loggia<a class="link-info" href="#" role="button"
+                                                           data-bs-toggle="popover"
+                                                           data-bs-trigger="focus"
+                                                           data-bs-content="U prodajnoj površini loggia se računa s koeficijentom 0,75"
+                                                        >*</a></th>
+              <th class="text-center" scope="col">terasa<a class="link-info" href="#" role="button"
+                                                           data-bs-toggle="popover"
+                                                           data-bs-trigger="focus"
+                                                           data-bs-content="U prodajnoj površini terasa se računa s koeficijentom 0,5"
+                                                        >*</a></th>
+              <th class="text-center" scope="col">vrt<a class="link-info" href="#" role="button"
+                                                        data-bs-toggle="popover"
+                                                        data-bs-trigger="focus"
+                                                        data-bs-content="U prodajnoj površini vrt se računa s koeficijentom 0,25"
+                                                     >*</a></th>
 
-              <th class="text-end" scope="col">ukupno</th>
+              <th class="text-center" scope="col">ukupno</th>
+              <th class="text-center" scope="col">prodajna</th>
             </tr>
           </thead>
           <tbody id="stanovi-table-body" class="table-group-divider">
