@@ -3,7 +3,7 @@ import '../scss/styles.scss';
 
 
 // Import only the Bootstrap components we need
-import { Util, Dropdown, Offcanvas, Popover } from 'bootstrap';
+import { Util, Dropdown, Offcanvas, Popover, Tooltip } from 'bootstrap';
 
 // Create an example popover
 document.querySelectorAll('[data-bs-toggle="popover"]')
@@ -124,3 +124,7 @@ document.getElementById("stanovi-modals").innerHTML = modals;
 //   const stan = e.relatedTarget.innerHTML;
 //   document.getElementById("modal-title").innerHTML = stan;
 // })
+
+
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl))

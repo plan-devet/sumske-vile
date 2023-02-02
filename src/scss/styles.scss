@@ -102,3 +102,8 @@ td {
 
 $bootstrap-icons-font-dir: "~bootstrap-icons/font/fonts";
 @import "~bootstrap-icons/font/bootstrap-icons.scss";
+
+// ref: https://stackoverflow.com/questions/69823936/how-to-allow-pinch-zoom-and-swipe-in-bootstrap-carousel
+.carousel.pointer-event {
+  touch-action: pan-y pinch-zoom;
+}
