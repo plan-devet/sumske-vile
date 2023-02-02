@@ -83,8 +83,7 @@
 	    </div>
 
       <hr class="mt-5 mb-3">
-      <a href="#" data-bs-toggle="tooltip" data-bs-title="The last tip!">*</a>
-      <h2 id="ponuda_stanova" class="section">Ponuda stanova</h2>
+      <h2 id="stanovi" class="section">Stanovi</h2>
       <div class="table-responsive">
         <table class="table table-hover table-bordered">
           <thead class="table-bordered table-light">
@@ -123,8 +122,90 @@
           </tbody>
         </table>
       </div>
-
       <div id="stanovi-modals"></div>
+
+      <hr class="mt-5 mb-3">
+      <h2 id="parkings" class="section">Parkirna mjesta</h2>
+      <div class="col-5">
+        <table class="table table-hover table-bordered">
+          <thead class="table-bordered table-light">
+            <tr>
+              <th scope="col">mjesto</th>
+              <th class="text-center" scope="col">tip</th>
+              <th class="text-center" scope="col">površina</th>
+              <th class="text-center" scope="col">cijena</th>
+            </tr>
+          </thead>
+          <tbody id="parkings-table-body" class="table-group-divider">
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="mt-5 mb-3">
+      <h2 id="warehouses" class="section">Spremišta</h2>
+      <div class="col-3">
+        <table class="table table-hover table-bordered">
+          <thead class="table-bordered table-light">
+            <tr>
+              <th scope="col">spremište</th>
+              <th class="text-center" scope="col">površina</th>
+              <th class="text-center" scope="col">cijena</th>
+            </tr>
+          </thead>
+          <tbody id="warehouses-table-body" class="table-group-divider">
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal fade" tabindex="-1" id="modal-warehouses" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Spremišta i gražna mjesta</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body container-xl">
+              <div class="row">
+                <div class="col p-2">
+                  <div class="card border-secondary">
+                    <div class="card-body">
+                      <img class="card-img-top" src="images/warehouses.png">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" tabindex="-1" id="modal-parkings" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Parkirna mjesta</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body container-xl">
+              <div class="row">
+                <div class="col p-2">
+                  <div class="card border-secondary">
+                    <div class="card-body">
+                      <img class="card-img-top" src="images/parkings.png">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <hr class="mt-5 mb-3">
       <h2 id="kontakt" class="section">Kontakt</h2>
