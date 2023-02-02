@@ -1,4 +1,4 @@
-const data = [
+export const apartments = [
   {
     stan: "A 1-1",
     kat: 0,
@@ -218,4 +218,39 @@ const data = [
 
 ];
 
-export default data;
+export const parkings = [
+  { code: "PGM 01", type: "parkirno garažno mjesto", area: 12.90 },
+  { code: "PGM 02", type: "parkirno garažno mjesto", area: 13.40 },
+  { code: "PGM 03", type: "parkirno garažno mjesto", area: 25.10 },
+  { code: "GM 04", type: "garažno mjesto", area: 27.90 },
+  { code: "GM 05", type: "garažno mjesto", area: 20.40 },
+  { code: "PGM 06", type: "parkirno garažno mjesto", area: 12.90 },
+  { code: "PGM 07", type: "parkirno garažno mjesto", area: 13.00 },
+  { code: "PGM 08", type: "parkirno garažno mjesto", area: 12.20 },
+  { code: "PGM 09", type: "parkirno garažno mjesto", area: 12.90 },
+  { code: "PGM 10", type: "parkirno garažno mjesto", area: 13.00 },
+  { code: "PGM 11", type: "parkirno garažno mjesto", area: 22.90 },
+  { code: "GM 12", type: "garažno mjesto", area: 14.90 },
+  { code: "GM 13", type: "garažno mjesto", area: 19.20 },
+  { code: "PGM 14", type: "parkirno garažno mjesto", area: 12.90 },
+  { code: "PGM 15", type: "parkirno garažno mjesto", area: 13.50 },
+  { code: "PGM 16", type: "parkirno garažno mjesto", area: 13.00 },
+
+  { code: "PM 17", type: "parkirno mjesto", area:  12.50 },
+  { code: "PM 18", type: "parkirno mjesto", area:  12.50 },
+];
+
+export const warehouses = [
+  { code: "SP 01", area: 6.80 },
+  { code: "SP 02", area: 7.30 },
+  { code: "SP 03", area: 7.30 },
+  { code: "SP 04", area: 7.30 },
+  { code: "SP 05", area: 6.80 },
+  { code: "SP 06", area: 6.80 },
+  { code: "SP 07", area: 6.80 },
+  { code: "SP 08", area: 7.30 },
+  { code: "SP 09", area: 7.30 },
+  { code: "SP 10", area: 7.00 },
+  { code: "SP 11", area: 6.80 },
+  { code: "SP 12", area: 6.40 },
+];

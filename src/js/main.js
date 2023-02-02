@@ -17,9 +17,7 @@ const template = Handlebars.compile("Name: {{name}}");
 console.log(template({ name: "Nils" }));
 
 
-import data from "./apartments.js"
-
-
+import {apartments, parkings, warehouses} from "./apartments.js"
 
 const rowTemplate = Handlebars.compile(`
 <tr>
@@ -49,7 +47,7 @@ const rowTemplate = Handlebars.compile(`
 </tr>
 `);
 
-const tableBody = data.map(d =>
+const tableBody = apartments.map(d =>
   rowTemplate({
     code: code(d.stan),
     stan: d.stan,
@@ -96,13 +94,45 @@ function code(stan) {
 
 const modalTemplate = require("./apartment.hbs");
 
-const modals = data.map(d => modalTemplate({
+const modals = apartments.map(d => modalTemplate({
   code: code(d.stan),
   name: d.stan,
   kat: d.kat == 0 ? "PRIZEMLJE" : d.kat + ". KAT",
   povrsina: fCurrency(d.prodajno),
 })).join(" ");
 document.getElementById("stanovi-modals").innerHTML = modals;
+
+const parkingTemplate = require("./parking.hbs");
+document.getElementById("parkings-table-body").innerHTML = parkings.map(d => parkingTemplate({
+  modal: d.code.startsWith("PM") ? "modal-parkings" : "modal-warehouses",
+  code: d.code,
+  type: d.type,
+  area: fCurrency(d.area),
+  iznos: parkingPrice(d.code, d.area),
+})).join(" ");
+
+const warehouseTemplate = require("./warehouse.hbs");
+document.getElementById("warehouses-table-body").innerHTML = warehouses.map(d => warehouseTemplate({
+  code: d.code,
+  area: fCurrency(d.area),
+  price: parkingPrice(d.code, d.area),
+})).join(" ");
+
+function parkingPrice(code, area) {
+  if (code.startsWith("PGM")) {
+    return fCurrency(area * 1500, 0);
+  }
+  if (code.startsWith("GM")) {
+    return fCurrency(area * 1800, 0);
+  }
+  if (code.startsWith("PM")) {
+    return fCurrency(area * 1200, 0);
+  }
+  if (code.startsWith("SP")) {
+    return fCurrency(area * 1600, 0);
+  }
+  return "?";
+}
 
 
 // init tooltips
