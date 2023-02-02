@@ -93,30 +93,9 @@ function code(stan) {
   return stan.replace(" ", "-").toLowerCase()
 }
 
-const modalTemplate = Handlebars.compile(`
-      <div class="modal fade" tabindex="-1" id="modal-{{code}}" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">
-                  {{name}}
-                  <i class="bi bi-three-dots-vertical"></i>
-                  {{kat}}
-                  <i class="bi bi-three-dots-vertical"></i>
-                  {{povrsina}} m<sup>2<sup>
-              </h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <img src="images/stan-{{code}}.png" width="100%">
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-          </div>
-        </div>
-      </div>
-`);
+
+const modalTemplate = require("./apartment.hbs");
+
 const modals = data.map(d => modalTemplate({
   code: code(d.stan),
   name: d.stan,
@@ -126,16 +105,6 @@ const modals = data.map(d => modalTemplate({
 document.getElementById("stanovi-modals").innerHTML = modals;
 
 
-
-// const myModal = document.getElementById('modal')
-
-// myModal.addEventListener('shown.bs.modal', (e) => {
-//   console.log(this);
-//   console.log(e.relatedTarget.innerHTML);
-//   const stan = e.relatedTarget.innerHTML;
-//   document.getElementById("modal-title").innerHTML = stan;
-// })
-
-
+// init tooltips
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl))
