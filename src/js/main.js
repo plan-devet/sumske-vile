@@ -32,7 +32,6 @@ const rowTemplate = Handlebars.compile(`
 
   <td class="text-center">{{soba}}</td>
   <td class="text-center">{{prodajno}}</td>
-  <td class="text-center">{{cijena}}</td>
   <td class="text-center">{{iznos}}</td>
   <td class="text-center">&nbsp</td>
 
@@ -67,13 +66,14 @@ const tableBody = data.map(d =>
     vrt: fAreas(d.vrt),
     ukupno: fCurrency(d.ukupno),
     cijena: fCurrency(d.cijena),
-    iznos: fCurrency(d.cijena * d.prodajno)
+    iznos: fCurrency(d.cijena * d.prodajno, 0)
   })
 ).join(" ");
 document.getElementById("stanovi-table-body").innerHTML = tableBody;
 
-function fCurrency(num) {
-  return num.toLocaleString('hr', { minimumFractionDigits:2 });
+function fCurrency(num, digits) {
+  digits = digits === undefined ? 2 : digits;
+  return num.toLocaleString('hr', { minimumFractionDigits: digits, maximumFractionDigits: digits });
 }
 
 function fAreas(a) {
@@ -98,7 +98,13 @@ const modalTemplate = Handlebars.compile(`
         <div class="modal-dialog modal-fullscreen">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">{{name}}</h5>
+              <h5 class="modal-title">
+                  {{name}}
+                  <i class="bi bi-three-dots-vertical"></i>
+                  {{kat}}
+                  <i class="bi bi-three-dots-vertical"></i>
+                  {{povrsina}} m<sup>2<sup>
+              </h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -111,7 +117,12 @@ const modalTemplate = Handlebars.compile(`
         </div>
       </div>
 `);
-const modals = data.map(d => modalTemplate({code: code(d.stan), name: d.stan})).join(" ");
+const modals = data.map(d => modalTemplate({
+  code: code(d.stan),
+  name: d.stan,
+  kat: d.kat == 0 ? "PRIZEMLJE" : d.kat + ". KAT",
+  povrsina: fCurrency(d.prodajno),
+})).join(" ");
 document.getElementById("stanovi-modals").innerHTML = modals;
 
 
