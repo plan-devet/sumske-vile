@@ -3,7 +3,7 @@ import '../scss/styles.scss';
 
 
 // Import only the Bootstrap components we need
-import { Util, Dropdown, Offcanvas, Popover, Tooltip } from 'bootstrap';
+import { Util, Dropdown, Offcanvas, Popover, Tooltip, Collapse } from 'bootstrap';
 
 // Create an example popover
 document.querySelectorAll('[data-bs-toggle="popover"]')
@@ -140,9 +140,15 @@ const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl))
 
 
-// const navLinks = document.querySelectorAll('.nav-item')
-// const menuToggle = document.getElementById('navbarSupportedContent')
-// const bsCollapse = new Collapse(menuToggle)
-// navLinks.forEach((l) => {
-//     l.addEventListener('click', () => { bsCollapse.toggle() })
-// })
+// Close navbar on click when in collapsed mode
+// ref: https://stackoverflow.com/questions/42401606/how-to-hide-collapsible-bootstrap-navbar-on-click
+const navLinks = document.querySelectorAll('.nav-item')
+const menuToggle = document.getElementById('navbarSupportedContent')
+const bsCollapse = new Collapse(menuToggle, {toggle: false})
+navLinks.forEach((l) => {
+    l.addEventListener('click', () => {
+      if (bsCollapse._isShown()) {
+        bsCollapse.hide();
+      }
+    })
+})
