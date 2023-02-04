@@ -2,7 +2,7 @@
 import '../scss/styles.scss';
 
 // Import only the Bootstrap components we need
-import { Util, Dropdown, Offcanvas, Popover, Tooltip, Collapse } from 'bootstrap';
+import { Tooltip, Collapse } from 'bootstrap';
 
 // Init tooltips
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
