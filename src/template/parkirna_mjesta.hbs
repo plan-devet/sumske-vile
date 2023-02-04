@@ -15,7 +15,7 @@
                 <th class="text-center" scope="col">cijena</th>
             </tr>
         </thead>
-        <tbody id="parkings-table-body" class="table-group-divider">
+        <tbody class="table-group-divider">
             {{#each parkirnaMjestaRows }}
                 {{> "./_parkirno_mjesto_row.hbs" this}}
             {{/each}}
@@ -23,7 +23,7 @@
     </table>
 </div>
 
-<div class="modal fade" tabindex="-1" id="modal-parkings" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" tabindex="-1" id="modal-parkings" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
