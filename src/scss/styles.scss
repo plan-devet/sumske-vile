@@ -73,7 +73,7 @@ $container-max-widths: (
 // @import "~bootstrap/scss/toasts";
 @import "~bootstrap/scss/modal"; // Requires transitions
 @import "~bootstrap/scss/tooltip";
-@import "~bootstrap/scss/popover";
+// @import "~bootstrap/scss/popover";
 @import "~bootstrap/scss/carousel";
 // @import "~bootstrap/scss/spinners";
 // @import "~bootstrap/scss/offcanvas"; // Requires transitions
@@ -86,19 +86,16 @@ $container-max-widths: (
 @import "~bootstrap/scss/utilities/api";
 @import "~bootstrap/scss/helpers/position";
 
+// Fonts
+//$bootstrap-icons-font-dir: "~bootstrap-icons/font/fonts";
+//@import "~bootstrap-icons/font/bootstrap-icons.scss";
 
-// body {
-//   padding: 0.5rem;
-// }
 
 td {
   white-space: nowrap;
 }
 
-
-$bootstrap-icons-font-dir: "~bootstrap-icons/font/fonts";
-@import "~bootstrap-icons/font/bootstrap-icons.scss";
-
+// Allow zoom on mobile
 // ref: https://stackoverflow.com/questions/69823936/how-to-allow-pinch-zoom-and-swipe-in-bootstrap-carousel
 .carousel.pointer-event {
   touch-action: pan-y pinch-zoom;
@@ -109,17 +106,28 @@ img.card-img-top {
   max-height: auto;
 }
 
+// Because we have sticky header
 html {
   scroll-padding-top: 80px;
 }
 
+// Height for google location map
 .location-map {
   height: 50vh;
   max-height: 600px;
 }
 
-
 footer a {
     color: var(--bs-body-color);
     text-decoration: none;
+}
+
+.svg-icon {
+  display: inline-flex;
+  align-self: center;
+  height:1em;
+  width:1em;
+  top: -0.125em;
+  position: relative;
+  vertical-align: text-bottom;
 }

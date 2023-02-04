@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const data = require("./src/js/data.js");
 
@@ -27,6 +28,7 @@ const plugins = [
     filename: "[name].[contenthash].css",
     chunkFilename: "[id].[contenthash].css",
   }),
+  //new BundleAnalyzerPlugin()
 ];
 
 module.exports = {
@@ -71,7 +73,7 @@ module.exports = {
           { loader: cssLoader },
           {
             // Interprets `@import` and `url()` like `import/require()` and will resolve them
-            loader: 'css-loader'
+            loader: 'css-loader',
           },
           {
             // Loader for webpack to process CSS with PostCSS
