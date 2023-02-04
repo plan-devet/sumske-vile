@@ -290,7 +290,7 @@ exports.stanoviRows = (stanovi.map(d =>
 ));
 
 exports.parkirnaMjestaRows = parkings.map(d => ({
-  modal: d.code.startsWith("PM") ? "modal-parkings" : "modal-warehouses",
+  modal: d.code.startsWith("PM") ? "modal-parking" : "modal-spremiste",
   code: d.code,
   type: d.type,
   area: fmtNumeric(d.area),
