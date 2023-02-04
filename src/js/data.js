@@ -259,12 +259,12 @@ exports.stanoviModals = (stanovi.map(d => ({
   code: code(d.stan),
   name: d.stan,
   kat: d.kat == 0 ? "PRIZEMLJE" : d.kat + ". KAT",
-  povrsina: fCurrency(d.prodajno),
+  povrsina: fmtNumeric(d.prodajno),
 })));
 
 exports.spremistaRows = spremista.map(d => ({
   code: d.code,
-  area: fCurrency(d.area),
+  area: fmtNumeric(d.area),
   price: parkingPrice(d.code, d.area),
 }));
 
@@ -275,17 +275,17 @@ exports.stanoviRows = (stanovi.map(d =>
     kat: d.kat == 0 ? "PR" : d.kat,
     ulaz: d.ulaz,
     soba: d.soba.length,
-    boravak: fCurrency(d.boravak),
-    kuhinja: fCurrency(d.kuhinja),
-    sobe: fAreas(d.soba),
-    kupaonica: fAreas(d.kupaonica),
-    prodajno: fCurrency(d.prodajno),
-    loggia: fAreas(d.loggia),
-    terasa: fAreas(d.terasa),
-    vrt: fAreas(d.vrt),
-    ukupno: fCurrency(d.ukupno),
-    cijena: fCurrency(d.cijena),
-    iznos: fCurrency(d.cijena * d.prodajno, 0)
+    boravak: fmtNumeric(d.boravak),
+    kuhinja: fmtNumeric(d.kuhinja),
+    sobe: fmtNumeric(d.soba),
+    kupaonica: fmtNumeric(d.kupaonica),
+    prodajno: fmtNumeric(d.prodajno),
+    loggia: fmtNumeric(d.loggia),
+    terasa: fmtNumeric(d.terasa),
+    vrt: fmtNumeric(d.vrt),
+    ukupno: fmtNumeric(d.ukupno),
+    cijena: fmtNumeric(d.cijena),
+    iznos: fmtNumeric(d.cijena * d.prodajno, 0)
   })
 ));
 
@@ -293,26 +293,26 @@ exports.parkirnaMjestaRows = parkings.map(d => ({
   modal: d.code.startsWith("PM") ? "modal-parkings" : "modal-warehouses",
   code: d.code,
   type: d.type,
-  area: fCurrency(d.area),
+  area: fmtNumeric(d.area),
   iznos: parkingPrice(d.code, d.area),
 }));
 
-function fCurrency(num, digits) {
+function fmtCurrency(num, digits) {
   digits = digits === undefined ? 2 : digits;
   return num.toLocaleString('hr', { minimumFractionDigits: digits, maximumFractionDigits: digits });
 }
 
-function fAreas(a) {
+function fmtNumeric(a, digits) {
   if (!a) {
     return "-";
   }
   if (!Array.isArray(a)) {
-    return fCurrency(a);
+    return fmtCurrency(a, digits);
   }
   if (a.length == 1) {
-    return fCurrency(a[0]);
+    return fmtCurrency(a[0], digits);
   }
-  return a.map(e => fCurrency(e)).join(" | ");
+  return a.map(e => fmtCurrency(e, digits)).join(" | ");
 }
 
 function code(stan) {
@@ -321,16 +321,16 @@ function code(stan) {
 
 function parkingPrice(code, area) {
   if (code.startsWith("PGM")) {
-    return fCurrency(area * 1500, 0);
+    return fmtCurrency(area * 1500, 0);
   }
   if (code.startsWith("GM")) {
-    return fCurrency(area * 1800, 0);
+    return fmtCurrency(area * 1800, 0);
   }
   if (code.startsWith("PM")) {
-    return fCurrency(area * 1200, 0);
+    return fmtCurrency(area * 1200, 0);
   }
   if (code.startsWith("SP")) {
-    return fCurrency(area * 1600, 0);
+    return fmtCurrency(area * 1600, 0);
   }
   return "?";
 }
