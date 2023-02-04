@@ -1,0 +1,60 @@
+<div class="modal fade" tabindex="-1" id="modal-{{code}}" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          {{name}}
+          <i class="bi bi-three-dots-vertical"></i>
+          {{kat}}
+          <i class="bi bi-three-dots-vertical"></i>
+          {{povrsina}} m<sup>2<sup>
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body container-xl">
+
+        <div class="row">
+          <div class="col-md-6 p-2">
+            <div class="card border-secondary">
+              <div class="card-header">Pozicija stana na tlocrtu</div>
+              <div class="card-body">
+                <img class="card-img-top" src="images/{{code}}/p.png">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 p-2">
+            <div class="card border-secondary">
+              <div class="card-header">Pozicija stana na na južnom pročelju</div>
+              <div class="card-body">
+                <img class="card-img-top" src="images/{{code}}/r.png">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-8 p-2">
+            <div class="card border-secondary">
+              <div class="card-header">Tlocrt</div>
+              <div class="card-body">
+                <img class="card-img-top" src="images/{{code}}/t.png">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 p-2">
+            <div class="card border-secondary">
+              <div class="card-header">Iskaz površina</div>
+              <div class="card-body">
+                <img class="card-img-top" src="images/{{code}}/v.png">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+</div>

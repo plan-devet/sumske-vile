@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="hr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Šumske vile</title>
+        <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
+        <link rel="icon" type="image/png" href="favicon/favicon.png">
+    </head>
+    <body>
+        {{> svg.hbs}}
+        {{> nav.hbs}}
+
+        <div class="container-xxl py-4 mx-auto"
+             data-bs-spy="scroll"
+             data-bs-target="#navbarSupportedContent"
+             data-bs-smooth-scroll="true">
+
+            <section>{{> visuals.hbs}}</section>
+            <section>{{> stanovi.hbs}}</section>
+            <section>{{> parkirna_mjesta.hbs}}</section>
+            <section>{{> spremista.hbs}}</section>
+            <section>{{> kontakt.hbs}}</section>
+            {{> footer.hbs}}
+
+        </div>
+        <script src="./main.js"></script>
+    </body>
+</html>

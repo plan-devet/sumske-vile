@@ -1,4 +1,7 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const data = require("./src/js/data.js");
 
 module.exports = {
   mode: 'development',
@@ -16,7 +19,15 @@ module.exports = {
     alias: {
        handlebars: 'handlebars/dist/handlebars.min.js'
     }
-},
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      hash: false,
+      inject: false,
+      template: './src/template/index.hbs',
+      templateParameters: data,
+    }),
+  ],
   module: {
     rules: [
       { test: /\.hbs$/, loader: "handlebars-loader" },

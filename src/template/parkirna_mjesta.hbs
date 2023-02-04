@@ -1,0 +1,44 @@
+<hr class="mt-5 mb-3">
+<h2 id="parkirna-mjesta" class="section">Parkirna mjesta</h2>
+<div class="table-responsive-md" style="max-width: 450px">
+    <table class="table table-hover table-bordered">
+        <thead class="table-bordered table-light">
+            <tr>
+                <th scope="col">mjesto</th>
+                <th class="text-center" scope="col">tip</th>
+                <th class="text-center" scope="col">površina</th>
+                <th class="text-center" scope="col">cijena</th>
+            </tr>
+        </thead>
+        <tbody id="parkings-table-body" class="table-group-divider">
+            {{#each parkirnaMjestaRows }}
+                {{> "./_parkirno_mjesto_row.hbs" this}}
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" tabindex="-1" id="modal-parkings" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Parkirna mjesta</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body container-xl">
+                <div class="row">
+                    <div class="col p-2">
+                        <div class="card border-secondary">
+                            <div class="card-body">
+                                <img class="card-img-top" src="images/parkings.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+</div>

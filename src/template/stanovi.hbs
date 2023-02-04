@@ -1,0 +1,47 @@
+<hr class="mt-5 mb-3">
+<h2 id="stanovi" class="section">Stanovi</h2>
+<div class="table-responsive">
+    <table class="table table-hover table-bordered">
+        <thead class="table-bordered table-light">
+            <tr>
+                <th colspan="5"></th>
+                <th>&nbsp</th>
+                <th colspan="9" class="text-center">površine</th>
+            </tr>
+            <tr>
+                <th scope="col">stan</th>
+                <th class="text-center" scope="col">kat</th>
+                <th class="text-center" scope="col">#&nbsp;soba</th>
+                <th class="text-center" scope="col">površina</th>
+                <th class="text-center" scope="col">cijena</th>
+                <th class="text-center" scope="col">&nbsp</th>
+
+                <th class="text-center" scope="col">sobe</th>
+                <th class="text-center" scope="col">boravak</th>
+                <th class="text-center" scope="col">kuhinja</th>
+                <th class="text-center" scope="col">kupaonica</th>
+
+                <th class="text-center" scope="col">
+                    <a data-bs-toggle="tooltip" data-bs-title="U prodajnoj površini loggia se računa s koeficijentom 0,75">loggia<sup>*</sup></a>
+                </th>
+                <th class="text-center" scope="col">
+                    <a data-bs-toggle="tooltip" data-bs-title="U prodajnoj površini terasa se računa s koeficijentom 0,5">treasa<sup>*</sup></a>
+                </th>
+                <th class="text-center" scope="col">
+                    <a data-bs-toggle="tooltip" data-bs-title="U prodajnoj površini vrt se računa s koeficijentom 0,25">vrt<sup>*</sup></a>
+                </th>
+                <th class="text-center" scope="col">ukupno</th>
+                <th class="text-center" scope="col">prodajno</th>
+            </tr>
+        </thead>
+        <tbody id="stanovi-table-body" class="table-group-divider">
+            {{#each stanoviRows }}
+                {{> "./_stan_row.hbs" this}}
+            {{/each}}
+        </tbody>
+    </table>
+
+    {{#each stanoviModals }}
+        {{> "./_stan_modal.hbs" this}}
+    {{/each}}
+</div>
