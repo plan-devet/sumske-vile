@@ -9,8 +9,10 @@
   "scripts": {
     "start": "webpack serve --config webpack.dev.js",
     "build": "webpack build --config webpack.prod.js",
-    "dist": "webpack build --config webpack.prod.js",
-    "push": "git push && git subtree push --prefix dist origin gh-pages"
+    "prod": "webpack build --config webpack.prod.js",
+    "dev": "webpack build --config webpack.dev.js",
+    "push": "git push && git subtree push --prefix dist origin gh-pages",
+    "clean": "rm dist/*.js dist/*.html dist/*.css dist/*.txt"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.6",
