@@ -1,39 +1,63 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+
 const data = require("./src/js/data.js");
 
 module.exports = {
   mode: 'development',
-  entry: './src/js/main.js',
+  entry: {
+    main: './src/js/main.js',
+    css:  './src/js/css.js',
+  },
   output: {
-    filename: "main.js",
+    //filename: "main.js",
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, "dist"),
+    //clean: true,
   },
   devServer:{
     static: path.resolve(__dirname, 'dist'),
     port: 8080,
     hot: true
   },
-  resolve: {
-    alias: {
-       handlebars: 'handlebars/dist/handlebars.min.js'
-    }
-  },
+  // resolve: {
+  //   alias: {
+  //      handlebars: 'handlebars/dist/handlebars.min.js'
+  //   }
+  // },
   plugins: [
     new HtmlWebpackPlugin({
       hash: false,
-      inject: false,
+      inject: 'body',
       template: './src/template/index.hbs',
       templateParameters: data,
     }),
+    //new MiniCssExtractPlugin(),
   ],
+     optimization: {
+      runtimeChunk: 'single',
+      //  splitChunks: {
+     //     chunks: 'all',
+     // },
+   },
+  // optimization: {
+  //   minimize: true,
+  //   minimizer: [
+  //     // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
+  //     `...`,
+  //     new CssMinimizerPlugin(),
+  //   ],
+  // },
   module: {
     rules: [
       { test: /\.hbs$/, loader: "handlebars-loader" },
       {
         test: /\.(scss)$/,
         use: [
+          //{ loader: MiniCssExtractPlugin.loader },
           {
             // Adds CSS to the DOM by injecting a `<style>` tag
             loader: 'style-loader'

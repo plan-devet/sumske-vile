@@ -9,7 +9,7 @@
   "scripts": {
     "start": "webpack serve --config webpack.dev.js",
     "build": "webpack build --config webpack.prod.js",
-    "dist":  "webpack build --config webpack.prod.js",
+    "dist": "webpack build --config webpack.prod.js",
     "push": "git push && git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
@@ -22,6 +22,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.13",
     "css-loader": "^6.7.3",
+    "css-minimizer-webpack-plugin": "^4.2.2",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.7.2",
