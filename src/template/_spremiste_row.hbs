@@ -5,5 +5,11 @@
     </a>
   </td>
   <td class="text-center">{{area}}</td>
-  <td class="text-center">{{price}}</td>
+  <!--
+       <td class="text-center">{{price}}</td>
+  -->
+  <td class="text-center">
+    {{> "_email.hbs" subject="Upit za spremište" id=code }}
+  </td>
+
 </tr>

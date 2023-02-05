@@ -6,5 +6,10 @@
   </td>
   <td class="text-center">{{type}}</td>
   <td class="text-center">{{area}}</td>
-  <td class="text-center">{{iznos}}</td>
+  <!--
+       <td class="text-center">{{iznos}}</td>
+  -->
+  <td class="text-center">
+      {{> "_email.hbs" subject="Upit za parkirno mjesto" id=code }}
+  </td>
 </tr>

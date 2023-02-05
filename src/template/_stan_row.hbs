@@ -8,8 +8,12 @@
 
   <td class="text-center">{{soba}}</td>
   <td class="text-center">{{prodajno}}</td>
-  <td class="text-center">{{iznos}}</td>
-  <td class="text-center">&nbsp</td>
+  <!--
+       <td class="text-center">{{iznos}}</td>
+  -->
+  <td class="text-center">
+    {{> "_email.hbs" subject="Upit za stan" id=stan }}
+  </td>
 
   <td class="text-center">{{sobe}}</td>
   <td class="text-center">{{boravak}}</td>
