@@ -1,11 +1,12 @@
-global.extractCss = true;
+import { merge } from 'webpack-merge'
+import common from './webpack.config.js'
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin"
+import MiniCssExtractPlugin from "mini-css-extract-plugin"
 
-const { merge } = require('webpack-merge');
-const common = require('./webpack.config.js');
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// replace last step in scss rules
+common.module.rules[0].use[0] = { loader: MiniCssExtractPlugin.loader };
 
-module.exports = merge(common, {
+export default merge(common, {
   mode: 'production',
 
   optimization: {

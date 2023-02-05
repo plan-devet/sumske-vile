@@ -1,17 +1,13 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+import path from 'path'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import MiniCssExtractPlugin from "mini-css-extract-plugin"
 
-const data = require("./src/js/data.js");
+// set __dirname
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
-// extract css in production
-const cssLoader =
-      global.extractCss ?
-      // Extracts css into [js-file].css file
-      MiniCssExtractPlugin.loader
-      :
-      //Adds CSS to the DOM by injecting a `<style>` tag
-      'style-loader';
+import data from "./src/js/data.js";
 
 const plugins = [
   new HtmlWebpackPlugin({
@@ -28,7 +24,7 @@ const plugins = [
   }),
 ];
 
-module.exports = {
+export default {
   mode: 'development',
   entry: {
     main: './src/js/main.js',
@@ -45,11 +41,12 @@ module.exports = {
   plugins: plugins,
   module: {
     rules: [
-      { test: /\.hbs$/, loader: "handlebars-loader" },
+      // keep this rule first in array it is modified in webpack.prod.js, found by index 0
       {
         test: /\.(scss)$/,
         use: [
-          { loader: cssLoader },
+          //Adds CSS to the DOM by injecting a `<style>` tag
+          { loader: 'style-loader' },
           {
             // Interprets `@import` and `url()` like `import/require()` and will resolve them
             loader: 'css-loader',
@@ -71,8 +68,9 @@ module.exports = {
             // Loads a SASS/SCSS file and compiles it to CSS
             loader: 'sass-loader'
           }
-        ]
-      }
+        ],
+      },
+      { test: /\.hbs$/, loader: "handlebars-loader" },
     ]
   }
 }

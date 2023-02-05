@@ -255,65 +255,49 @@ const spremista = [
   { code: "SP 12", area: 6.40 },
 ];
 
-exports.stanoviModals = (stanovi.map(d => ({
+import * as fmt from "./fmt.js"
+
+const stanoviModals = (stanovi.map(d => ({
   code: code(d.stan),
   name: d.stan,
   kat: d.kat == 0 ? "PRIZEMLJE" : d.kat + ". KAT",
-  povrsina: fmtNumeric(d.prodajno),
+  povrsina: fmt.numeric(d.prodajno),
 })));
 
-exports.spremistaRows = spremista.map(d => ({
+const spremistaRows = spremista.map(d => ({
   code: d.code,
-  area: fmtNumeric(d.area),
+  area: fmt.numeric(d.area),
   price: parkingPrice(d.code, d.area),
 }));
 
-exports.stanoviRows = (stanovi.map(d =>
+const stanoviRows = (stanovi.map(d =>
   ({
     code: code(d.stan),
     stan: d.stan,
     kat: d.kat == 0 ? "PR" : d.kat,
     ulaz: d.ulaz,
     soba: d.soba.length,
-    boravak: fmtNumeric(d.boravak),
-    kuhinja: fmtNumeric(d.kuhinja),
-    sobe: fmtNumeric(d.soba),
-    kupaonica: fmtNumeric(d.kupaonica),
-    prodajno: fmtNumeric(d.prodajno),
-    loggia: fmtNumeric(d.loggia),
-    terasa: fmtNumeric(d.terasa),
-    vrt: fmtNumeric(d.vrt),
-    ukupno: fmtNumeric(d.ukupno),
-    cijena: fmtNumeric(d.cijena),
-    iznos: fmtNumeric(d.cijena * d.prodajno, 0)
+    boravak: fmt.numeric(d.boravak),
+    kuhinja: fmt.numeric(d.kuhinja),
+    sobe: fmt.numeric(d.soba),
+    kupaonica: fmt.numeric(d.kupaonica),
+    prodajno: fmt.numeric(d.prodajno),
+    loggia: fmt.numeric(d.loggia),
+    terasa: fmt.numeric(d.terasa),
+    vrt: fmt.numeric(d.vrt),
+    ukupno: fmt.numeric(d.ukupno),
+    cijena: fmt.numeric(d.cijena),
+    iznos: fmt.numeric(d.cijena * d.prodajno, 0)
   })
 ));
 
-exports.parkirnaMjestaRows = parkings.map(d => ({
+const parkirnaMjestaRows = parkings.map(d => ({
   modal: d.code.startsWith("PM") ? "modal-parking" : "modal-spremiste",
   code: d.code,
   type: d.type,
-  area: fmtNumeric(d.area),
+  area: fmt.numeric(d.area),
   iznos: parkingPrice(d.code, d.area),
 }));
-
-function fmtCurrency(num, digits) {
-  digits = digits === undefined ? 2 : digits;
-  return num.toLocaleString('hr', { minimumFractionDigits: digits, maximumFractionDigits: digits });
-}
-
-function fmtNumeric(a, digits) {
-  if (!a) {
-    return "-";
-  }
-  if (!Array.isArray(a)) {
-    return fmtCurrency(a, digits);
-  }
-  if (a.length == 1) {
-    return fmtCurrency(a[0], digits);
-  }
-  return a.map(e => fmtCurrency(e, digits)).join(" | ");
-}
 
 function code(stan) {
   return stan.replace(" ", "-").toLowerCase()
@@ -321,16 +305,18 @@ function code(stan) {
 
 function parkingPrice(code, area) {
   if (code.startsWith("PGM")) {
-    return fmtCurrency(area * 1500, 0);
+    return fmt.numeric(area * 1500, 0);
   }
   if (code.startsWith("GM")) {
-    return fmtCurrency(area * 1800, 0);
+    return fmt.numeric(area * 1800, 0);
   }
   if (code.startsWith("PM")) {
-    return fmtCurrency(area * 1200, 0);
+    return fmt.numeric(area * 1200, 0);
   }
   if (code.startsWith("SP")) {
-    return fmtCurrency(area * 1600, 0);
+    return fmt.numeric(area * 1600, 0);
   }
   return "?";
 }
+
+export default {stanoviRows, stanoviModals, parkirnaMjestaRows, spremistaRows };
